@@ -1,0 +1,49 @@
+Query: Create 3 new dojos
+    Dojo.objects.create(name="CodingDojo", city="Macon", state="GA")
+    Dojo.objects.create(name="CodingDojo", city="San Jose", state="CA")
+    Dojo.objects.create(name="CodingDojo", city="Hanover", state="MD")
+
+Query: Delete the 3 dojos you just created
+    c = Dojo.objects.get(id=1)
+    c.delete()
+    c = Dojo.objects.get(id=2)
+    c.delete()
+    c = Dojo.objects.get(id=3)
+    c.delete()
+
+Query: Create 3 more dojos
+    Dojo.objects.create(name="CodingDojo", city="Homer", state="AK")
+    Dojo.objects.create(name="CodingDojo", city="San Jose", state="CA")
+    Dojo.objects.create(name="CodingDojo", city="Steilacoom", state="WA")
+
+Query: Create 3 ninjas that belong to the first dojo
+    z = Dojo.objects.get(city="Homer")
+    Ninja.objects.create(first_name="Rob", last_name="Braddock", dojo=z)
+    Ninja.objects.create(first_name="Lynnmarie", last_name="Braddock", dojo=z)
+    Ninja.objects.create(first_name="Ragnarok", last_name="Barkyface", dojo=z)
+
+Query: Create 3 ninjas that belong to the second dojo
+    y = Dojo.objects.get(city="San Jose")
+    Ninja.objects.create(first_name="Craigy", last_name="Ferg", dojo=y)
+    Ninja.objects.create(first_name="Ziggy", last_name="Pop", dojo=y)
+    Ninja.objects.create(first_name="Sid", last_name="Vicious", dojo=y)
+
+Query: Create 3 ninjas that belong to the third dojo
+    x = Dojo.objects.get(city="Steilacoom")
+    Ninja.objects.create(first_name="Greg", last_name="Gutfeld", dojo=x)
+    Ninja.objects.create(first_name="Amy", last_name="Winehouse", dojo=x)
+    Ninja.objects.create(first_name="Tom", last_name="Jones", dojo=x)
+
+Query: Retrieve all the ninjas from the first dojo
+    Ninja.objects.filter(dojo=z).values()
+
+Query: Retrieve all the ninjas from the last dojo
+    Ninja.objects.filter(dojo=x).values()
+
+Query: Retrieve the last ninja's dojo
+	Ninja.objects.last()
+
+Query: Create a new dojo
+	Dojo.objects.create(name="CodingDojo", city="Kotzebue", state="AK", desc="Beautiful and Remote Location")
+
+
