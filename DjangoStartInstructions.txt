@@ -1,0 +1,84 @@
+1. OPEN ENVIRONMENT####################
+cd C:\Users\Lynnmarie\Desktop\Dojo_Assignments\Python\my_environments
+call djangoPy3ENV\Scripts\activate
+
+2. OPEN A DJANGO PROJECT####################
+> cd python_stack/django/django_intro
+django_intro> django-admin startproject your_project_name_here
+
+
+3. TEST SERVER#############################
+> cd your_project_name_here
+##VERIFY IT WORKS
+your_project_name_here> python manage.py runserver
+
+4.ADD AN APP#############################
+your_project_name_here> python manage.py startapp your_app_name_here
+
+5. MODIFY SETTINGS.PY###############
+INSTALLED_APPS = [
+       'your_app_name_here', # added this line. Don't forget the comma!!
+       'django.contrib.admin',
+       'django.contrib.auth',
+       'django.contrib.contenttypes',
+       'django.contrib.sessions',
+       'django.contrib.messages',
+       'django.contrib.staticfiles',
+   ]
+   
+5. MODIFY URLS.PY###############
+
+from django.urls import path, include           
+urlpatterns = [
+    path('', include('your_app_name_here.urls')),	   
+]
+
+6. COPY URLS.PY into APP folder
+
+7. MODIFY APP URLS.PY###############
+from django.urls import path     
+from . import views
+urlpatterns = [
+    path('', views.index),	   
+]
+
+8. MODIFY VIEWS.PY in the APP folder
+from django.shortcuts import render, HttpResponse
+def index(request):
+    return HttpResponse("hooray. this is the equivalent of @app.route('/')!")
+	
+9. MIGRATE TO ALLOW USE OF SESSION
+
+python manage.py migrate
+
+10. TEST SERVER#############################
+> cd your_project_name_here
+##VERIFY IT WORKS
+your_project_name_here> python manage.py runserver
+
+11. CREATE TEMPLATES AND STATIC FOLDERS
+
+12. MODELS FOLDER
+
+from django.db import models
+################################
+# Create your models here.
+################################
+class User(models.Model):
+    first_name = models.CharField(max_length=45)
+    last_name = models.TextField()
+    email_address = models.DateTimeField()
+    age = models.IntegerField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+13. MIGRATIONS
+
+python manage.py makemigrations
+
+python manage.py migrate
+
+
+	
+	
+	
